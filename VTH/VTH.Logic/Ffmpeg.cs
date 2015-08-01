@@ -35,9 +35,10 @@ namespace VTH.Logic
             yield return 0;
 
             //  To webm
+            
             if (inExt != "webm")
             {
-                string command = "-i {0} {3} {1}.{2}";
+                string command = "-i \"{0}\" {3} \"{1}.{2}\"";
                 this.Execute(string.Format(command, inFile, outFile, "webm", Audio ? "-acodec libvorbis" : "-an"), fi.DirectoryName);
             }
             yield return 33;
@@ -45,7 +46,7 @@ namespace VTH.Logic
             //  To ogv
             if (inExt != "ogv")
             {
-                string command = "-i {0}  -vcodec libtheora {3} {1}.{2}";
+                string command = "-i \"{0}\" -vcodec libtheora {3} \"{1}.{2}\"";
                 this.Execute(string.Format(command, inFile, outFile, "ogv", Audio ? "-acodec libvorbis" : "-an"), fi.DirectoryName);
             }
             yield return 66;
@@ -53,7 +54,7 @@ namespace VTH.Logic
             //  To mp4
             if (inExt != "mp4")
             {
-                string command = "-i {0}  -vcodec mpeg4 {3} {1}.{2}";
+                string command = "-i \"{0}\" -vcodec mpeg4 {3} \"{1}.{2}\"";
                 this.Execute(string.Format(command, inFile, outFile, "mp4", Audio ? "-acodec libfaac" : "-an"), fi.DirectoryName);
             }
             yield return 100;
